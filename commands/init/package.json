@@ -1,0 +1,43 @@
+{
+  "name": "@msfe/usu-init",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
+  "homepage": "https://github.com/yiyi17/felab#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.in.zhihu.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yiyi17/felab.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/yiyi17/felab/issues"
+  },
+  "dependencies": {
+    "@msfe/usu-command": "file:../../models/command",
+    "@msfe/usu-log": "file:../../utils/log",
+    "@msfe/usu-package": "file:../../models/package",
+    "@msfe/usu-request": "file:../../utils/request",
+    "@msfe/usu-utils": "file:../../utils/utils",
+    "ejs": "^3.1.8",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
+    "inquirer": "^4.0.2",
+    "kebab-case": "^1.0.1",
+    "semver": "^7.3.7",
+    "user-home": "^3.0.0"
+  }
+}

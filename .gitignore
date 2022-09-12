@@ -1,0 +1,6 @@
+node_modules
+.vscode
+.idea
+packages/**/node_modules
+lerna-debug.log
+example

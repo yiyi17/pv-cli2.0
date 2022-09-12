@@ -1,0 +1,25 @@
+{
+  "name": "@msfe/usu",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "usu": "core/cli/bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "core/*",
+    "commands/*",
+    "models/*",
+    "utils/*",
+    "templates/*"
+  ],
+  "private": true,
+  "dependencies": {
+  }
+}

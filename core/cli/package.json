@@ -1,0 +1,53 @@
+{
+  "name": "@msfe/usu-core",
+  "version": "0.0.6",
+  "description": "zhihu-cli-dev core",
+  "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
+  "homepage": "https://github.com/yiyi17/felab#readme",
+  "license": "ISC",
+  "bin": {
+    "usu": "bin/index.js"
+  },
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.in.zhihu.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yiyi17/felab.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/yiyi17/felab/issues"
+  },
+  "dependencies": {
+    "@msfe/usu-exec": "file:../exec",
+    "@msfe/usu-get-npm-info": "file:../../utils/get-npm-info",
+    "@msfe/usu-init": "file:../../commands/init",
+    "@msfe/usu-log": "file:../../utils/log",
+    "@msfe/usu-utils": "file:../../utils/utils",
+    "colors": "^1.4.2",
+    "commander": "^9.4.0",
+    "dedent": "^0.7.0",
+    "dotenv": "^16.0.1",
+    "import-local": "^3.1.0",
+    "npmlog": "^6.0.2",
+    "path": "^0.12.7",
+    "path-exists": "^5.0.0",
+    "root-check": "^2.0.0",
+    "semver": "^7.3.7",
+    "shelljs": "^0.8.5",
+    "user-home": "2",
+    "yargs": "^17.5.1"
+  },
+  "gitHead": "5f47d651fc3922a4b35982c90310c63db4de26ad"
+}

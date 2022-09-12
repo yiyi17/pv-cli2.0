@@ -1,0 +1,39 @@
+{
+  "name": "@msfe/usu-package",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
+  "homepage": "https://github.com/yiyi17/felab#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.in.zhihu.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yiyi17/felab.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/yiyi17/felab/issues"
+  },
+  "dependencies": {
+    "@msfe/usu-format-path": "file:../../utils/format-path",
+    "@msfe/usu-get-npm-info": "file:../../utils/get-npm-info",
+    "@msfe/usu-log": "file:../../utils/log",
+    "@msfe/usu-utils": "file:../../utils/utils",
+    "fs-extra": "^10.1.0",
+    "npminstall": "^6.5.0",
+    "path-exists": "^5.0.0",
+    "pkg-dir": "^6.0.1"
+  }
+}
