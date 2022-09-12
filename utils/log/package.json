@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "description": "usu log",
   "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
-  "homepage": "https://github.com/yiyi17/felab#readme",
+  "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yiyi17/felab.git"
+    "url": "git+https://github.com/yiyi17/pv-cli2.0.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/yiyi17/felab/issues"
+    "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
   "dependencies": {
     "npmlog": "^6.0.2"
