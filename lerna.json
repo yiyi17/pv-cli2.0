@@ -7,7 +7,6 @@
     "core/*",
     "commands/*",
     "models/*",
-    "utils/*",
-    "templates/*"
+    "utils/*"
   ]
 }

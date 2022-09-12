@@ -16,8 +16,7 @@
     "core/*",
     "commands/*",
     "models/*",
-    "utils/*",
-    "templates/*"
+    "utils/*"
   ],
   "private": true,
   "dependencies": {
