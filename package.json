@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "usu": "core/cli/bin/index.js"
+    "usu": "core/cli/bin/index.js",
+    "pv": "core/cli/bin/index.js"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+  }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

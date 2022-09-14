@@ -17,7 +17,7 @@ const getProjectTemplate = require("./getProjectTemplate");
 
 const TEMPLATE_TYPE_NORMAL = "normal";
 const TEMPLATE_TYPE_CUSTOM = "custom";
-const WHITE_COMMAND = ["npm", "yarn"];
+const WHITE_COMMAND = ["npm", "yarn", "pnpm"];
 
 class InitCommand extends Command {
   // constructor(argv) {
@@ -35,8 +35,8 @@ class InitCommand extends Command {
     log.verbose("force", this.force);
   }
   /**
-   * 
-   * @returns 
+   *
+   * @returns
    * @description 准备阶段
    */
   async prepare() {
@@ -84,8 +84,8 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @returns 
+   *
+   * @returns
    * @description 获取项目信息
    */
   async getProjectInfo() {
@@ -123,10 +123,12 @@ class InitCommand extends Command {
       ],
     });
     log.verbose("选择模版", type);
-    
-    this.template = this.template.filter(template => template.tag.includes(type))
-    
-    const title = type === TYPE_PROEJCT ? '项目' : '组件'
+
+    this.template = this.template.filter((template) =>
+      template.tag.includes(type)
+    );
+
+    const title = type === TYPE_PROEJCT ? "项目" : "组件";
     // 项目信息
     const projectNamePrompt = {
       type: "input",
@@ -137,9 +139,7 @@ class InitCommand extends Command {
         const done = this.async();
         setTimeout(() => {
           if (!isValidateName(v)) {
-            done(
-              "首字符必须为英文，尾字符必须为英文，字符仅允许-_字母和数字"
-            );
+            done("首字符必须为英文，尾字符必须为英文，字符仅允许-_字母和数字");
           }
           done(null, true);
         }, 0);
@@ -164,7 +164,7 @@ class InitCommand extends Command {
           }, 0);
         },
         filter: function (v) {
-          if (!!semver.valid(v)) {
+          if (semver.valid(v)) {
             return semver.valid(v);
           } else {
             return v;
@@ -190,7 +190,7 @@ class InitCommand extends Command {
         ...project,
       };
     } else if (type === TYPE_COMPONENT) {
-      const descPrompt =   {
+      const descPrompt = {
         type: "input",
         name: "componentDes",
         message: "请输入组件描述信息",
@@ -203,10 +203,10 @@ class InitCommand extends Command {
             }
             done(null, true);
           }, 0);
-        }
-      }
+        },
+      };
 
-      projectPrompt.push(descPrompt)
+      projectPrompt.push(descPrompt);
 
       const component = await inquirer.prompt(projectPrompt);
 
@@ -220,17 +220,17 @@ class InitCommand extends Command {
     projectInfo.name = require("kebab-case")(projectInfo.projectName);
     projectInfo.version = projectInfo.projectVersion;
 
-    if(projectInfo.componentDes) {
-      projectInfo.description = projectInfo.componentDes
+    if (projectInfo.componentDes) {
+      projectInfo.description = projectInfo.componentDes;
     }
     // 2、获取项目基本信息
     return projectInfo;
   }
 
   /**
-   * 
-   * @param {*} template 
-   * @returns 
+   *
+   * @param {*} template
+   * @returns
    * @description 选择项目模版
    */
   createTemplateChoice(template) {
@@ -258,15 +258,15 @@ class InitCommand extends Command {
       }
     } catch (error) {
       log.error(error);
-      if(process.env.LOG_LEVEL === 'verbose') {
-          console.log(error)
+      if (process.env.LOG_LEVEL === "verbose") {
+        console.log(error);
       }
     }
   }
 
   /**
-   * 
-   * @param {*} projectInfo 
+   *
+   * @param {*} projectInfo
    * @description 安装项目模版
    */
   async installTemplate(projectInfo) {
@@ -291,9 +291,9 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @param {*} cmd 
-   * @returns 
+   *
+   * @param {*} cmd
+   * @returns
    * @description 检查命令是否合法
    */
   checkCommand(cmd) {
@@ -304,10 +304,10 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @param {*} command 
-   * @param {*} errMsg 
-   * @returns 
+   *
+   * @param {*} command
+   * @param {*} errMsg
+   * @returns
    * @description 执行命令
    */
   async execCommand(command, errMsg) {
@@ -333,8 +333,8 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @param {*} projectInfo 
+   *
+   * @param {*} projectInfo
    * @description 普通模版项目创建，初始化
    */
   async installNormalTemplate(projectInfo) {
@@ -350,6 +350,7 @@ class InitCommand extends Command {
       fse.ensureDirSync(templatePath);
       fse.ensureDirSync(targetPath);
       fse.copySync(templatePath, targetPath);
+      // eslint-disable-next-line no-useless-catch
     } catch (error) {
       throw error;
     } finally {
@@ -357,7 +358,7 @@ class InitCommand extends Command {
       log.success("模版安装成功");
     }
 
-    const templateIgnore = this.templateInfo.ignore || []
+    const templateIgnore = this.templateInfo.ignore || [];
     const ignore = ["node_modules/**", ...templateIgnore];
     await this.ejsRender({ ignore }, projectInfo);
 
@@ -373,7 +374,9 @@ class InitCommand extends Command {
     await this.execCommand(startCommand, "启动过程过程失败！");
   }
 
-  async installCustomTemplate(projectInfo) {}
+  async installCustomTemplate(projectInfo) {
+    //
+  }
 
   /**
    *
@@ -382,7 +385,7 @@ class InitCommand extends Command {
    * @description ejs 渲染模版，设置项目名称
    */
   async ejsRender(option, projectInfo) {
-    const dir = process.cwd();   
+    const dir = process.cwd();
     return new Promise((resolve, reject) => {
       glob(
         "**",
@@ -435,8 +438,8 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @param {*} projectInfo 
+   *
+   * @param {*} projectInfo
    * @description 缓存模版下载与更新
    */
   async donwloadTemplate(projectInfo) {
@@ -466,6 +469,7 @@ class InitCommand extends Command {
       await sleep();
       try {
         await templateNpm.install();
+        // eslint-disable-next-line no-useless-catch
       } catch (error) {
         throw error;
       } finally {
@@ -480,6 +484,7 @@ class InitCommand extends Command {
       await sleep();
       try {
         await templateNpm.update();
+        // eslint-disable-next-line no-useless-catch
       } catch (error) {
         throw error;
       } finally {
@@ -493,9 +498,9 @@ class InitCommand extends Command {
   }
 
   /**
-   * 
-   * @param {*} localPath 
-   * @returns 
+   *
+   * @param {*} localPath
+   * @returns
    * @description 判断是否是空文件夹,除了 .文件和 node_modules
    */
   isDirEmpty(localPath) {
@@ -508,9 +513,9 @@ class InitCommand extends Command {
 }
 
 /**
- * 
- * @param {*} argv 
- * @returns 
+ *
+ * @param {*} argv
+ * @returns
  * @description 初始化 InitCommand，单例模式
  */
 function usuInit(argv) {
