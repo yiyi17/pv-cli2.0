@@ -1,9 +1,10 @@
 const request = require("@msfe/usu-request");
 
-module.exports = function () {
-  return request({
-    url: 'https://use.in.zhihu.com/templates/config'
+module.exports = async function () {
+  const result = await request({
+    url: 'https://usc.in.zhihu.com/templates/config.json'
   })
+  return result?.data
   // return [
   //   {
   //     name: "react-umi4",
