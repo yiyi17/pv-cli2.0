@@ -6,8 +6,8 @@
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
   "license": "ISC",
   "bin": {
-    "usu": "bin/index.js",
-    "pv": "bin/index.js"
+    "pv": "bin/index.js",
+    "usu2": "bin/index.js"
   },
   "main": "lib/core.js",
   "directories": {
