@@ -6,8 +6,8 @@
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
   "license": "ISC",
   "bin": {
-    "pv": "bin/index.js",
-    "usu2": "bin/index.js"
+    "usu": "bin/index.js",
+    "pv": "bin/index.js"
   },
   "main": "lib/core.js",
   "directories": {
@@ -36,7 +36,7 @@
     "@msfe/usu-init": "file:../../commands/init",
     "@msfe/usu-log": "file:../../utils/log",
     "@msfe/usu-utils": "file:../../utils/utils",
-    "colors": "^1.4.2",
+    "colors": "^1.4.0",
     "commander": "^9.4.0",
     "dedent": "^0.7.0",
     "dotenv": "^16.0.1",

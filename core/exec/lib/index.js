@@ -32,7 +32,7 @@ async function exec() {
         // npm 包
         targetPath = path.resolve(homePath, CACHE_DIR)
         storeDir = path.resolve(targetPath, 'node_modules')
-        console.log('!targetPath',targetPath,storeDir);
+        // console.log('!targetPath',targetPath,storeDir);
          pkg = new Pakage({
             targetPath,
             packageName,
@@ -40,7 +40,7 @@ async function exec() {
             storeDir
         })
         if(await pkg.exists()) {
-           console.log('更新xx');
+        //    console.log('更新xx');
            await pkg.update()
         }else{
          await pkg.install()
