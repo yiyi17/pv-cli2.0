@@ -1,6 +1,6 @@
 {
   "name": "@msfe/usu-core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "zhihu-cli-dev core",
   "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
@@ -36,7 +36,7 @@
     "@msfe/usu-init": "file:../../commands/init",
     "@msfe/usu-log": "file:../../utils/log",
     "@msfe/usu-utils": "file:../../utils/utils",
-    "colors": "^1.4.2",
+    "colors": "^1.4.0",
     "commander": "^9.4.0",
     "dedent": "^0.7.0",
     "dotenv": "^16.0.1",
