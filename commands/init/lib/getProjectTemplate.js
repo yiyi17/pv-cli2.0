@@ -2,8 +2,11 @@ const request = require("@msfe/usu-request");
 
 module.exports = async function () {
   const result = await request({
-    url: 'https://usc.in.zhihu.com/templates/config.json'
+    url: 'https://cdn.jsdelivr.net/gh/yiyi17/cdn-assets/templates/config.json',
+    timeout: 50000
   })
+
+  // console.log(result);
   return result?.data
   // return [
   //   {
