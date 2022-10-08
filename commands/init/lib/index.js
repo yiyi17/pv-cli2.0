@@ -17,7 +17,7 @@ const getProjectTemplate = require("./getProjectTemplate");
 
 const TEMPLATE_TYPE_NORMAL = "normal";
 const TEMPLATE_TYPE_CUSTOM = "custom";
-const WHITE_COMMAND = ["npm", "yarn", "pnpm"];
+const WHITE_COMMAND = ["npm", "yarn", "pnpm", 'go', 'echo'];
 
 class InitCommand extends Command {
   // constructor(argv) {
