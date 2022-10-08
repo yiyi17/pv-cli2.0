@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 const commander = require("commander");
 const log = require("@msfe/usu-log");
-
 const pkg = require("../package.json");
 const shell = require("shelljs");
-const initProject = require("@msfe/usu-init");
 const exec = require("@msfe/usu-exec");
+const fse = require("fs-extra");
+const path = require('path')
 
 function command() {
   const program = new commander.Command();
@@ -39,13 +39,13 @@ function command() {
 
   // 注册命令
   // <>必传 []非必传
-  const clone = program.command("clone <source> [destination]");
-  clone
-    .description("clone a registry")
-    .option("-f, --force", "是否强制克隆")
-    .action((source, destination, cmdObj) => {
-      console.log("do clone", source, destination, cmdObj);
-    });
+  // const clone = program.command("clone <source> [destination]");
+  // clone
+  //   .description("clone a registry")
+  //   .option("-f, --force", "是否强制克隆")
+  //   .action((source, destination, cmdObj) => {
+  //     console.log("do clone", source, destination, cmdObj);
+  //   });
 
   // 注册初始化项目命令
   program.on("option:targetPath", (args) => {
@@ -56,6 +56,24 @@ function command() {
     .description("初始化项目")
     .option("--force, -f", "如果项目存在是否强制初始化")
     .action(exec);
+
+  // 清除项目模版缓存
+  const cleanCache = program.command("clean");
+  cleanCache
+    .description("清除缓存")
+    .option("--force, -f", "是否强制清楚缓存")
+    .action(async (arg) => {
+      // console.log(arg);
+      if(arg.F) {
+          // 缓存目录
+        const { default: userHome } = await import("user-home");
+        const storeDir = path.resolve(userHome, ".usu-cli-dev");
+        // 执行删除命令
+        fse.emptyDirSync(storeDir);
+        log.success("清除缓存成功"+storeDir);
+      }
+    });
+
 
   // 创建组件
   const create = program.command("create <componentName> [type]");

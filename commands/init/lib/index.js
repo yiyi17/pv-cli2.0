@@ -210,7 +210,7 @@ class InitCommand extends Command {
 
       const component = await inquirer.prompt(projectPrompt);
 
-      console.log(component);
+      // console.log(component);
       projectInfo = {
         ...projectInfo,
         type,
