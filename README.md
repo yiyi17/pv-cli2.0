@@ -9,7 +9,7 @@ sudo npm i @msfe/usu-core -g
 
 ## 私有化部署
 
-1、clone 到本地，将项目中的 npm 源全部修改为 自己的源
+1、clone 到本地，将项目中的 npm 源全部修改为自己的源
 
 2、使用 lerna 进行发布`npx lerna publish`
 
@@ -35,3 +35,7 @@ pv init --targetPath 项目本地路径/pv-cli2.0/commands/init -f
 1、命令行，在本仓库添加 MR
 
 2、项目模版，自行维护，但是请确保已发布 npm
+
+## TODO
+
+- [ ] npm 公有源发布
