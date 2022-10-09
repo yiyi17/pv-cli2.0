@@ -9,7 +9,7 @@ sudo npm i @msfe/usu-core -g
 
 ## 私有化部署
 
-1、clone 到本地
+1、clone 到本地，将项目中的 npm 源全部修改为 自己的源
 
 2、使用 lerna 进行发布`npx lerna publish`
 
