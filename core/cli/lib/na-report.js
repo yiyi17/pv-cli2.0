@@ -6,7 +6,7 @@ const { default: traverse } = require('@babel/traverse');
 const crypto = require('crypto');
 const request = require('request');
 const progress = require('cli-progress');
-const { SERVER_URL } = require('./const')
+const { SERVER_URL } = require('./const');
 
 // 进度条配置
 const bar = new progress.SingleBar({
@@ -269,9 +269,7 @@ const saveReport = async (res) => {
         return;
       }
       if (success) {
-        console.log(
-          `${res.app_name} 数据保存成功`,
-        );
+        console.log(`${res.app_name} 数据保存成功`);
       } else {
         console.log(msg);
       }

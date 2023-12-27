@@ -18,7 +18,6 @@ sudo npm i @pvjs/pv-cli -g
 
 4、如果想要增加项目模版，在这个项目模版下面参考数据格式添加`https://github.com/yiyi17/cdn-assets/blob/main/templates/config.json`
 
-
 ## 本地调试
 
 安装依赖

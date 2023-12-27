@@ -6,7 +6,11 @@ const semver = require('semver');
 const colors = require('colors/safe');
 const path = require('path');
 
-const { LOWEST_NODE_VERSION, DEFAULT_CLI_HOME, NPM_REGISTRY } = require('./const');
+const {
+  LOWEST_NODE_VERSION,
+  DEFAULT_CLI_HOME,
+  NPM_REGISTRY,
+} = require('./const');
 const pkg = require('../package.json');
 const command = require('./commander');
 
