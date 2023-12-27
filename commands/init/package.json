@@ -35,7 +35,7 @@
     "@pvjs/pv-utils": "file:../../utils/utils",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
-    "glob": "^8.0.3",
+    "glob": "^10.0.0",
     "inquirer": "^4.0.2",
     "kebab-case": "^1.0.1",
     "semver": "^7.3.7",
