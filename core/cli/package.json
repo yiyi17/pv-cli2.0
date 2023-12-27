@@ -1,6 +1,6 @@
 {
   "name": "@pvjs/pv-core",
-  "version": "0.0.26",
+  "version": "0.0.1",
   "description": "cli-dev core",
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
   "bugs": {
@@ -19,7 +19,7 @@
   "main": "lib/index.js",
   "bin": {
     "pv": "bin/index.js",
-    "usu": "bin/index.js"
+    "pvjs": "bin/index.js"
   },
   "directories": {
     "lib": "lib",

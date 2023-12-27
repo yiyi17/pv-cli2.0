@@ -1,7 +1,7 @@
 {
+  "private": true,
   "version": "0.0.1",
   "description": "",
- 
   "eslintConfig": {
     "env": {
       "node": true
@@ -21,7 +21,6 @@
     "models/*",
     "utils/*"
   ],
-  "private": true,
   "dependencies": {
     "@babel/parser": "^7.23.0",
     "@babel/traverse": "^7.23.2",
