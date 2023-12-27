@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@pvjs/pv-log": "file:../log",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "semver": "^7.3.7",
     "url-join": "^5.0.0"
   }
