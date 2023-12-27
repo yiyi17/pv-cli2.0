@@ -33,7 +33,7 @@
     "@pvjs/pv-log": "file:../../utils/log",
     "@pvjs/pv-utils": "file:../../utils/utils",
     "fs-extra": "^10.1.0",
-    "npminstall": "^6.5.0",
+    "npminstall": "^7.0.0",
     "path-exists": "^5.0.0",
     "pkg-dir": "^6.0.1"
   }
