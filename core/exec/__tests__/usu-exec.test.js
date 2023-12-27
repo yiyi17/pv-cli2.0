@@ -2,6 +2,6 @@
 
 const usuExec = require('..');
 
-describe('@msfe/usu-exec', () => {
-    it('needs tests');
+describe('@pvjs/pv-exec', () => {
+  it('needs tests');
 });

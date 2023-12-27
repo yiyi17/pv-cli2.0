@@ -1,11 +1,11 @@
-# `@msfe/usu-command`
+# `@pvjs/pv-command`
 
 > TODO: description
 
 ## Usage
 
 ```
-const usuCommand = require('@msfe/usu-command');
+const usuCommand = require('@pvjs/pv-command');
 
 // TODO: DEMONSTRATE API
 ```

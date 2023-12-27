@@ -1,6 +1,6 @@
 {
-  "name": "@msfe/usu-package",
-  "version": "0.0.10",
+  "name": "@pvjs/pv-package",
+  "version": "0.0.26",
   "description": "> TODO: description",
   "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
@@ -27,10 +27,10 @@
     "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
   "dependencies": {
-    "@msfe/usu-format-path": "file:../../utils/format-path",
-    "@msfe/usu-get-npm-info": "file:../../utils/get-npm-info",
-    "@msfe/usu-log": "file:../../utils/log",
-    "@msfe/usu-utils": "file:../../utils/utils",
+    "@pvjs/pv-format-path": "file:../../utils/format-path",
+    "@pvjs/pv-get-npm-info": "file:../../utils/get-npm-info",
+    "@pvjs/pv-log": "file:../../utils/log",
+    "@pvjs/pv-utils": "file:../../utils/utils",
     "fs-extra": "^10.1.0",
     "npminstall": "^6.5.0",
     "path-exists": "^5.0.0",

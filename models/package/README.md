@@ -1,11 +1,11 @@
-# `@msfe/usu-package`
+# `@pvjs/pv-package`
 
 > TODO: description
 
 ## Usage
 
 ```
-const usuPackage = require('@msfe/usu-package');
+const usuPackage = require('@pvjs/pv-package');
 
 // TODO: DEMONSTRATE API
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "@msfe/usu-init",
-  "version": "0.0.10",
+  "name": "@pvjs/pv-init",
+  "version": "0.0.26",
   "description": "> TODO: description",
   "author": "lei <'25927480+yiyi17@users.noreply.github.com'>",
   "homepage": "https://github.com/yiyi17/pv-cli2.0#readme",
@@ -27,17 +27,18 @@
     "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
   "dependencies": {
-    "@msfe/usu-command": "file:../../models/command",
-    "@msfe/usu-log": "file:../../utils/log",
-    "@msfe/usu-package": "file:../../models/package",
-    "@msfe/usu-request": "file:../../utils/request",
-    "@msfe/usu-utils": "file:../../utils/utils",
+    "@pvjs/pv-command": "file:../../models/command",
+    "@pvjs/pv-log": "file:../../utils/log",
+    "@pvjs/pv-package": "file:../../models/package",
+    "@pvjs/pv-request": "file:../../utils/request",
+    "@pvjs/pv-utils": "file:../../utils/utils",
     "ejs": "^3.1.8",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "inquirer": "^4.0.2",
     "kebab-case": "^1.0.1",
     "semver": "^7.3.7",
+    "shelljs": "^0.8.5",
     "user-home": "^3.0.0"
   }
 }

@@ -2,6 +2,6 @@
 
 const usuInit = require('..');
 
-describe('@msfe/usu-init', () => {
-    it('needs tests');
+describe('@pvjs/pv-init', () => {
+  it('needs tests');
 });

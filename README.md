@@ -1,10 +1,11 @@
-# pv-cli2.0
+# @pvjs/pv-cli
+
 前端脚手架
 
 ## 安装
 
 ```bash
-sudo npm i @msfe/usu-core -g
+sudo npm i @pvjs/pv-cli -g
 ```
 
 ## 私有化部署
@@ -18,6 +19,7 @@ sudo npm i @msfe/usu-core -g
 4、如果想要增加项目模版，在这个项目模版下面参考数据格式添加`https://github.com/yiyi17/cdn-assets/blob/main/templates/config.json`
 
 ## 本地调试
+
 1、调试 pv [command]
 
 方法1：安装之后，在根目录下面直接执行命令，例如`pv version`
@@ -35,7 +37,3 @@ pv init --targetPath 项目本地路径/pv-cli2.0/commands/init -f
 1、命令行，在本仓库添加 MR
 
 2、项目模版，自行维护，但是请确保已发布 npm
-
-## TODO
-
-- [ ] npm 公有源发布

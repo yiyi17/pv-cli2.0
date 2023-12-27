@@ -1,18 +1,18 @@
-const request = require("@msfe/usu-request");
+const request = require('@pvjs/pv-request');
 
 module.exports = async function () {
   const result = await request({
-    url: 'https://cdn.jsdelivr.net/gh/yiyi17/cdn-assets/templates/config.json',
-    // url: 'https://raw.githubusercontent.com/yiyi17/cdn-assets/v1.0.0/templates/config.json',
-    timeout: 50000
-  })
+    url: 'https://cdn.jsdelivr.net/gh/yiyi17/cdn-assets@master/templates/config.json',
+    // url:https://raw.githubusercontent.com/yiyi17/cdn-assets/master/templates/config.json
+    timeout: 50000,
+  });
 
   // console.log(result);
-  return result?.data
+  return result?.data;
   // return [
   //   {
   //     name: "react-umi4",
-  //     npmName: "@msfe/react-umi4-temp",
+  //     npmName: "@pvjs/react-umi4-temp",
   //     version: "0.0.6",
   //     type: "normal",
   //     installCommand: "yarn install",
@@ -22,7 +22,7 @@ module.exports = async function () {
   //   },
   //   {
   //     name: "react-vite",
-  //     npmName: "@msfe/react-vite-temp",
+  //     npmName: "@pvjs/react-vite-temp",
   //     version: "0.0.6",
   //     installCommand: "yarn install",
   //     startCommand: "yarn start",
@@ -31,7 +31,7 @@ module.exports = async function () {
   //   },
   //   {
   //     name: "react-component",
-  //     npmName: "@msfe/react-component-temp",
+  //     npmName: "@pvjs/react-component-temp",
   //     version: "0.0.6",
   //     installCommand: "yarn install",
   //     startCommand: "yarn start",

@@ -1,11 +1,11 @@
-# `@msfe/usu-log`
+# `@pvjs/pv-log`
 
 > TODO: description
 
 ## Usage
 
 ```
-const usuLog = require('@msfe/usu-log');
+const usuLog = require('@pvjs/pv-log');
 
 // TODO: DEMONSTRATE API
 ```

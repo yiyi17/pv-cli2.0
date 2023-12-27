@@ -2,6 +2,6 @@
 
 const usuFormatPath = require('..');
 
-describe('@msfe/usu-format-path', () => {
-    it('needs tests');
+describe('@pvjs/pv-format-path', () => {
+  it('needs tests');
 });

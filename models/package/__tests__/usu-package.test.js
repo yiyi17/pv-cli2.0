@@ -2,6 +2,6 @@
 
 const usuPackage = require('..');
 
-describe('@msfe/usu-package', () => {
-    it('needs tests');
+describe('@pvjs/pv-package', () => {
+  it('needs tests');
 });

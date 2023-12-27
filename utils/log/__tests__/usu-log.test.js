@@ -2,6 +2,6 @@
 
 const usuLog = require('..');
 
-describe('@msfe/usu-log', () => {
-    it('needs tests');
+describe('@pvjs/pv-log', () => {
+  it('needs tests');
 });

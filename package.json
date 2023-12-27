@@ -1,18 +1,15 @@
 {
-  "name": "@msfe/usu",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "bin": {
-    "usu": "core/cli/bin/index.js",
-    "pv": "core/cli/bin/index.js"
-  },
+ 
   "eslintConfig": {
     "env": {
       "node": true
-  }
+    }
   },
   "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write \"**/*.{ts,tsx,md,less,js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -26,5 +23,15 @@
   ],
   "private": true,
   "dependencies": {
+    "@babel/parser": "^7.23.0",
+    "@babel/traverse": "^7.23.2",
+    "ansi-colors": "^4.1.3",
+    "cli-progress": "^3.12.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-packagejson": "^2.4.6"
   }
 }

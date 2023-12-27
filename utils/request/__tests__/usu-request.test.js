@@ -2,6 +2,6 @@
 
 const usuRequest = require('..');
 
-describe('@msfe/usu-request', () => {
-    it('needs tests');
+describe('@pvjs/pv-request', () => {
+  it('needs tests');
 });

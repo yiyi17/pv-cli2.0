@@ -2,6 +2,6 @@
 
 const usuCommand = require('..');
 
-describe('@msfe/usu-command', () => {
-    it('needs tests');
+describe('@pvjs/pv-command', () => {
+  it('needs tests');
 });

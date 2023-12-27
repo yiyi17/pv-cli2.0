@@ -1,23 +1,24 @@
-"use strict";
-const Command = require("@msfe/usu-command");
-const log = require("@msfe/usu-log");
-const fs = require("fs");
-const fse = require("fs-extra");
-const inquirer = require("inquirer");
-const semver = require("semver");
-const Package = require("@msfe/usu-package");
-const path = require("path");
-const glob = require("glob");
-const ejs = require("ejs");
-const { spinnerStart, sleep, execSync } = require("@msfe/usu-utils");
+'use strict';
+const Command = require('@pvjs/pv-command');
+const log = require('@pvjs/pv-log');
+const fs = require('fs');
+const fse = require('fs-extra');
+const inquirer = require('inquirer');
+const semver = require('semver');
+const Package = require('@pvjs/pv-package');
+const path = require('path');
+const glob = require('glob');
+const ejs = require('ejs');
+const shell = require('shelljs');
+const { spinnerStart, sleep, execSync } = require('@pvjs/pv-utils');
 
-const TYPE_PROEJCT = "project";
-const TYPE_COMPONENT = "component";
-const getProjectTemplate = require("./getProjectTemplate");
+const TYPE_PROEJCT = 'project';
+const TYPE_COMPONENT = 'component';
+const getProjectTemplate = require('./getProjectTemplate');
 
-const TEMPLATE_TYPE_NORMAL = "normal";
-const TEMPLATE_TYPE_CUSTOM = "custom";
-const WHITE_COMMAND = ["npm", "yarn", "pnpm", 'go', 'echo'];
+const TEMPLATE_TYPE_NORMAL = 'normal';
+const TEMPLATE_TYPE_CUSTOM = 'custom';
+const WHITE_COMMAND = ['npm', 'yarn', 'pnpm', 'go', 'echo'];
 
 class InitCommand extends Command {
   // constructor(argv) {
@@ -29,10 +30,10 @@ class InitCommand extends Command {
    */
   init() {
     // console.log(this._cmd);
-    this.projectName = this._argv[0] || "";
+    this.projectName = this._argv[0] || '';
     this.force = !!this._argv[1].F;
-    log.verbose("_argv", this.projectName, this._argv);
-    log.verbose("force", this.force);
+    log.verbose('_argv', this.projectName, this._argv);
+    log.verbose('force', this.force);
   }
   /**
    *
@@ -43,22 +44,30 @@ class InitCommand extends Command {
     // TODO: 可以 usc 先静态配置
     const template = await getProjectTemplate();
     if (!template || !template.length) {
-      throw new Error("项目模版不存在");
+      throw new Error('项目模版不存在');
     }
     this.template = template;
-    const localPath = process.cwd();
-    // 1、断目录是否为空
+    let dir = this._argv[1].D;
+    let localPath = process.cwd();
+    //如果是相对路径
+    if (dir && (dir.startsWith('./') || dir.startsWith('../'))) {
+      dir = path.join(localPath, dir);
+    }
+    //绝对路径
+    localPath = dir || localPath;
+    // cd到指定的目录或停在当前目录
+    shell.cd(localPath);
+    // 1、判断目录是否为空
     const isEmpty = this.isDirEmpty(localPath);
-    // console.log('isEmpty',isEmpty);
     if (!isEmpty) {
       let ifContinue = false;
       // console.log(this.force);
       if (this.force) {
         const prom = await inquirer.prompt({
-          type: "confirm",
-          name: "ifContinue",
+          type: 'confirm',
+          name: 'ifContinue',
           default: false,
-          message: "当前文件夹不为空，是否继续创建项目",
+          message: '当前文件夹不为空，是否继续创建项目',
         });
 
         ifContinue = prom.ifContinue;
@@ -70,10 +79,10 @@ class InitCommand extends Command {
       if (ifContinue || this.force) {
         // 二次确认
         const { confirmDelete } = await inquirer.prompt({
-          type: "confirm",
-          name: "confirmDelete",
+          type: 'confirm',
+          name: 'confirmDelete',
           default: false,
-          message: "是否确认清空当前目录",
+          message: '是否确认清空当前目录',
         });
         if (confirmDelete) {
           fse.emptyDirSync(localPath);
@@ -107,39 +116,39 @@ class InitCommand extends Command {
     // console.log(this.projectName, isProjectNameValidate);
     // 1、选择模版
     const { type } = await inquirer.prompt({
-      type: "list",
-      name: "type",
-      message: "请选择初始化类型",
+      type: 'list',
+      name: 'type',
+      message: '请选择初始化类型',
       default: TYPE_PROEJCT,
       choices: [
         {
-          name: "项目",
+          name: '项目',
           value: TYPE_PROEJCT,
         },
         {
-          name: "组件",
+          name: '组件',
           value: TYPE_COMPONENT,
         },
       ],
     });
-    log.verbose("选择模版", type);
+    log.verbose('选择模版', type);
 
     this.template = this.template.filter((template) =>
-      template.tag.includes(type)
+      template.tag.includes(type),
     );
 
-    const title = type === TYPE_PROEJCT ? "项目" : "组件";
+    const title = type === TYPE_PROEJCT ? '项目' : '组件';
     // 项目信息
     const projectNamePrompt = {
-      type: "input",
-      name: "projectName",
+      type: 'input',
+      name: 'projectName',
       message: `请输入${title}名称`,
-      default: "",
+      default: '',
       validate: function (v) {
         const done = this.async();
         setTimeout(() => {
           if (!isValidateName(v)) {
-            done("首字符必须为英文，尾字符必须为英文，字符仅允许-_字母和数字");
+            done('首字符必须为英文，尾字符必须为英文，字符仅允许-_字母和数字');
           }
           done(null, true);
         }, 0);
@@ -150,10 +159,10 @@ class InitCommand extends Command {
     };
     const projectPrompt = [
       {
-        type: "input",
-        name: "projectVersion",
+        type: 'input',
+        name: 'projectVersion',
         message: `请输入${title}版本号`,
-        default: "1.0.0",
+        default: '1.0.0',
         validate: function (v) {
           const done = this.async();
           setTimeout(() => {
@@ -172,8 +181,8 @@ class InitCommand extends Command {
         },
       },
       {
-        type: "list",
-        name: "projectTemplate",
+        type: 'list',
+        name: 'projectTemplate',
         message: `请选择${title}模版`,
         choices: this.createTemplateChoice(),
       },
@@ -191,15 +200,15 @@ class InitCommand extends Command {
       };
     } else if (type === TYPE_COMPONENT) {
       const descPrompt = {
-        type: "input",
-        name: "componentDes",
-        message: "请输入组件描述信息",
-        default: "",
+        type: 'input',
+        name: 'componentDes',
+        message: '请输入组件描述信息',
+        default: '',
         validate: function (v) {
           const done = this.async();
           setTimeout(() => {
             if (!v) {
-              done("请输入组件描述信息");
+              done('请输入组件描述信息');
             }
             done(null, true);
           }, 0);
@@ -217,7 +226,7 @@ class InitCommand extends Command {
         ...component,
       };
     }
-    projectInfo.name = require("kebab-case")(projectInfo.projectName);
+    projectInfo.name = require('kebab-case')(projectInfo.projectName);
     projectInfo.version = projectInfo.projectVersion;
 
     if (projectInfo.componentDes) {
@@ -250,7 +259,7 @@ class InitCommand extends Command {
       // 1、准备
       const projectInfo = await this.prepare();
       if (projectInfo) {
-        log.verbose("projectInfo", projectInfo);
+        log.verbose('projectInfo', projectInfo);
         // 2、下载
         await this.donwloadTemplate(projectInfo);
         // 3、安装
@@ -258,7 +267,7 @@ class InitCommand extends Command {
       }
     } catch (error) {
       log.error(error);
-      if (process.env.LOG_LEVEL === "verbose") {
+      if (process.env.LOG_LEVEL === 'verbose') {
         console.log(error);
       }
     }
@@ -283,10 +292,10 @@ class InitCommand extends Command {
         // 自定义安装
         await this.installCustomTemplate(projectInfo);
       } else {
-        throw new Error("项目模版类型无法识别");
+        throw new Error('项目模版类型无法识别');
       }
     } else {
-      throw new Error("项目模版不存在");
+      throw new Error('项目模版不存在');
     }
   }
 
@@ -313,15 +322,15 @@ class InitCommand extends Command {
   async execCommand(command, errMsg) {
     let ret;
     if (command) {
-      const cmdArray = command.split(" ");
+      const cmdArray = command.split(' ');
       const cmd = this.checkCommand(cmdArray[0]);
       if (!cmd) {
-        throw new Error("命令不合法", command);
+        throw new Error('命令不合法', command);
       }
       const args = cmdArray.slice(1);
       // console.log(cmd, args);
       ret = await execSync(cmd, args, {
-        stdio: "inherit",
+        stdio: 'inherit',
         cwd: process.cwd(),
       });
     }
@@ -338,13 +347,13 @@ class InitCommand extends Command {
    * @description 普通模版项目创建，初始化
    */
   async installNormalTemplate(projectInfo) {
-    const spiner = spinnerStart("正在安装模版...");
+    const spiner = spinnerStart('正在安装模版...');
     await sleep();
     const targetPath = process.cwd();
     try {
       const templatePath = path.resolve(
         this.templateNpm.cacheFilePath,
-        "template"
+        'template',
       );
       // console.log(this.templateNpm.cacheFilePath);
       fse.ensureDirSync(templatePath);
@@ -355,23 +364,23 @@ class InitCommand extends Command {
       throw error;
     } finally {
       spiner.stop(true);
-      log.success("模版安装成功");
+      log.success('模版安装成功');
     }
 
     const templateIgnore = this.templateInfo.ignore || [];
-    const ignore = ["node_modules/**", ...templateIgnore];
+    const ignore = ['node_modules/**', ...templateIgnore];
     await this.ejsRender({ ignore }, projectInfo);
 
     // 判断 git 是否存在
-    if (!fse.existsSync(path.resolve(process.cwd(), ".git"))) {
-      execSync("git", ["init"]);
+    if (!fse.existsSync(path.resolve(process.cwd(), '.git'))) {
+      execSync('git', ['init']);
     }
 
     const { installCommand, startCommand } = this.templateInfo;
     // 安装依赖
-    await this.execCommand(installCommand, "依赖安装过程失败！");
+    await this.execCommand(installCommand, '依赖安装过程失败！');
     // 项目启动
-    await this.execCommand(startCommand, "启动过程过程失败！");
+    await this.execCommand(startCommand, '启动过程过程失败！');
   }
 
   async installCustomTemplate(projectInfo) {
@@ -388,10 +397,10 @@ class InitCommand extends Command {
     const dir = process.cwd();
     return new Promise((resolve, reject) => {
       glob(
-        "**",
+        '**',
         {
           cwd: dir,
-          ignore: option.ignore || "",
+          ignore: option.ignore || '',
           nodir: true,
         },
         (err, files) => {
@@ -413,7 +422,7 @@ class InitCommand extends Command {
                   resolve1(result);
                 });
               });
-            })
+            }),
           )
             .then(() => {
               resolve();
@@ -421,7 +430,7 @@ class InitCommand extends Command {
             .catch((err) => {
               reject(err);
             });
-        }
+        },
       );
     });
     // const pkgPath = path.resolve(process.cwd(), 'package.json')
@@ -431,7 +440,7 @@ class InitCommand extends Command {
     // let {projectName, projectVersion} = projectInfo
     // log.verbose(projectInfo);
     // const setPkgInfo =  pkgContent.toString()
-    //     .replace(`"name": "@msfe/react-umi4-temp"`, `"name": "${require('kebab-case')(projectName)}"`)
+    //     .replace(`"name": "@pvjs/react-umi4-temp"`, `"name": "${require('kebab-case')(projectName)}"`)
     //     .replace(`"version": "${version}"`, `"version": "${projectVersion}"`)
     // fse.writeFileSync(pkgPath, setPkgInfo)
     // 写内容
@@ -444,15 +453,15 @@ class InitCommand extends Command {
    */
   async donwloadTemplate(projectInfo) {
     // 1、获取项目模版信息
-    const { default: userHome } = await import("user-home");
+    const { default: userHome } = await import('user-home');
     // console.log(userHome);
     const { projectTemplate } = projectInfo;
     const templateInfo = this.template.find(
-      (item) => item.npmName === projectTemplate
+      (item) => item.npmName === projectTemplate,
     );
 
-    const targetPath = path.resolve(userHome, ".usu-cli-dev", "template");
-    const storeDir = path.resolve(userHome, ".usu-cli-dev", "template");
+    const targetPath = path.resolve(userHome, '.pv-cli-dev', 'template');
+    const storeDir = path.resolve(userHome, '.pv-cli-dev', 'template');
 
     const { npmName, version } = templateInfo;
 
@@ -465,7 +474,7 @@ class InitCommand extends Command {
     });
     // console.log(await templateNpm.exists());
     if (!(await templateNpm.exists())) {
-      const spinner = spinnerStart("正在下载模版...");
+      const spinner = spinnerStart('正在下载模版...');
       await sleep();
       try {
         await templateNpm.install();
@@ -475,12 +484,12 @@ class InitCommand extends Command {
       } finally {
         spinner.stop(true);
         if (await templateNpm.exists()) {
-          log.success("下载模版成功");
+          log.success('下载模版成功');
           this.templateNpm = templateNpm;
         }
       }
     } else {
-      const spinner = spinnerStart("正在更新模版...");
+      const spinner = spinnerStart('正在更新模版...');
       await sleep();
       try {
         await templateNpm.update();
@@ -490,7 +499,7 @@ class InitCommand extends Command {
       } finally {
         spinner.stop(true);
         if (await templateNpm.exists()) {
-          log.success("更新模版成功");
+          log.success('更新模版成功');
           this.templateNpm = templateNpm;
         }
       }
@@ -506,7 +515,7 @@ class InitCommand extends Command {
   isDirEmpty(localPath) {
     let fileList = fs.readdirSync(localPath);
     fileList = fileList.filter((file) => {
-      return !file.startsWith(".") && ["node_modules"].indexOf(file) < 0;
+      return !file.startsWith('.') && ['node_modules'].indexOf(file) < 0;
     });
     return !fileList || fileList.length <= 0;
   }

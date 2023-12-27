@@ -3,5 +3,5 @@
 const core = require('..');
 
 describe('core', () => {
-    it('needs tests');
+  it('needs tests');
 });
