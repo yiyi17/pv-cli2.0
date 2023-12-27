@@ -10,7 +10,8 @@
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,tsx,md,less,js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npx lerna publish"
   },
   "keywords": [],
   "author": "",
