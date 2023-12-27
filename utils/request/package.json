@@ -28,6 +28,6 @@
     "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^1.0.0"
   }
 }
