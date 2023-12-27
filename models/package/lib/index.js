@@ -101,7 +101,6 @@ class Pakage {
    */
   async install() {
     await this.prepare();
-    // console.log('install', this.targetPath, this.storeDir, getDefaultRegistry(true), this.packageName, this.packageVersion);
     return npmInstall({
       root: this.targetPath,
       storeDir: this.storeDir,

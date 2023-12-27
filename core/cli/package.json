@@ -6,6 +6,10 @@
   "bugs": {
     "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yiyi17/pv-cli2.0.git"
