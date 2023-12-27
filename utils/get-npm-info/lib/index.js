@@ -48,7 +48,6 @@ async function getNpmInfo(npmName, registry) {
       log.warn('npm 服务请求接口失败');
       return Promise.reject(err);
     });
-  // TODO
 }
 
 async function getNpmVersions(npmName, registry) {
@@ -64,9 +63,19 @@ async function getNpmVersions(npmName, registry) {
   }
 }
 
-//TODO: 这个函数可以支持配置私有源
+function getNpmConfig() {
+  const config = require('child_process').execSync('npm config ls')
+  return {
+    registry: config.toString().match(/registry = "(.*?)" \n/)?.[1]
+  }
+}
+
 function getDefaultRegistry(isOriginal = true) {
-  return isOriginal ? 'https://registry.npmjs.org' : '';
+  // 从环境变量中取一下
+  const { registry } =  getNpmConfig()
+  log.notice(`请求源：${registry}`);
+
+  return isOriginal ?  registry : 'https://registry.npmjs.org';
 }
 
 function getSemverVersions(baseVersion, versions) {
