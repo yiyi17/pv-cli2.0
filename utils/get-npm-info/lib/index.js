@@ -64,18 +64,18 @@ async function getNpmVersions(npmName, registry) {
 }
 
 function getNpmConfig() {
-  const config = require('child_process').execSync('npm config ls')
+  const config = require('child_process').execSync('npm config ls');
   return {
-    registry: config.toString().match(/registry = "(.*?)" \n/)?.[1]
-  }
+    registry: config.toString().match(/registry = "(.*?)" \n/)?.[1],
+  };
 }
 
 function getDefaultRegistry(isOriginal = true) {
   // 从环境变量中取一下
-  const { registry } =  getNpmConfig()
+  const { registry } = getNpmConfig();
   log.notice(`请求源：${registry}`);
 
-  return isOriginal ?  registry : 'https://registry.npmjs.org';
+  return isOriginal ? registry : 'https://registry.npmjs.org';
 }
 
 function getSemverVersions(baseVersion, versions) {
