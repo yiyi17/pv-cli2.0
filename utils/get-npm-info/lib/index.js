@@ -63,8 +63,10 @@ async function getNpmVersions(npmName, registry) {
     return [];
   }
 }
+
+//TODO: 这个函数可以支持配置私有源
 function getDefaultRegistry(isOriginal = true) {
-  return isOriginal ? 'https://npm.in.zhihu.com' : 'https://registry.npmjs.org';
+  return isOriginal ?  'https://registry.npmjs.org' : '';
 }
 
 function getSemverVersions(baseVersion, versions) {

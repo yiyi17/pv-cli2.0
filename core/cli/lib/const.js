@@ -3,8 +3,8 @@ const DEFAULT_CLI_HOME = '.pv-cli-dev';
 
 const NPM_REGISTRY = 'https://registry.npmjs.org'
 
-// TODO:
-const SERVER_URL = 'https://service.in.zhihu.com'
+// TODO: 需要配置自己的收集服务
+const SERVER_URL = ''
 
 module.exports = {
   LOWEST_NODE_VERSION,
