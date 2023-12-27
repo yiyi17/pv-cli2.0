@@ -28,6 +28,6 @@
     "url": "https://github.com/yiyi17/pv-cli2.0/issues"
   },
   "dependencies": {
-    "npmlog": "^6.0.2"
+    "npmlog": "^7.0.0"
   }
 }
