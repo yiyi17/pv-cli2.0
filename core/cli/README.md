@@ -5,7 +5,7 @@
 ## 安装
 
 ```js
-sudo npm i @pvjs/pv-core -g
+sudo npm i @pvjs/pv-cli -g
 
 ```
 
@@ -24,7 +24,7 @@ pv clean -f
 ## 安装开发依赖
 
 ```bash
-npm install @pvjs/pv-core --save-dev
+npm install @pvjs/pv-cli --save-dev
 ```
 
 ## 接入
