@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.2](https://github.com/yiyi17/pv-cli2.0/compare/@pvjs/pv-init@0.1.1...@pvjs/pv-init@0.1.2) (2023-12-28)
+
+
+### Bug Fixes
+
+* docs ([bed4819](https://github.com/yiyi17/pv-cli2.0/commit/bed4819d5a3f213e04a08582db31027c13c84a35))
+
+
+
+
 
 ## [0.1.1](https://github.com/yiyi17/pv-cli2.0/compare/@pvjs/pv-init@0.1.0...@pvjs/pv-init@0.1.1) (2023-12-28)
 

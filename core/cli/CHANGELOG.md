@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/yiyi17/pv-cli2.0/compare/@pvjs/pv-cli@0.1.1...@pvjs/pv-cli@0.1.2) (2023-12-28)
+
+**Note:** Version bump only for package @pvjs/pv-cli
+
+
+
+
+
 ## [0.1.1](https://github.com/yiyi17/pv-cli2.0/compare/@pvjs/pv-cli@0.1.0...@pvjs/pv-cli@0.1.1) (2023-12-28)
 
 
