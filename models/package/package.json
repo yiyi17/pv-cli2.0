@@ -32,7 +32,7 @@
     "@pvjs/pv-get-npm-info": "file:../../utils/get-npm-info",
     "@pvjs/pv-log": "file:../../utils/log",
     "@pvjs/pv-utils": "file:../../utils/utils",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.0.0",
     "npminstall": "^7.0.0",
     "path-exists": "^5.0.0",
     "pkg-dir": "^8.0.0"
