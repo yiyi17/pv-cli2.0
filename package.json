@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,tsx,md,less,js}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npx lerna publish"
+    "publish": "npx lerna publish -conventional-commits --yes"
   },
   "keywords": [],
   "author": "",
