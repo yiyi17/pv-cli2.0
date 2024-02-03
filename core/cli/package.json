@@ -43,7 +43,7 @@
     "child_process": "^1.0.2",
     "cli-progress": "^3.12.0",
     "colors": "1.4.0",
-    "commander": "^11.0.0",
+    "commander": "^12.0.0",
     "copy-paste": "^1.5.3",
     "crypto": "^1.0.1",
     "dedent": "^1.0.0",
