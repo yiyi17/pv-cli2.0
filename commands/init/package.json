@@ -39,7 +39,7 @@
     "inquirer": "^4.0.2",
     "kebab-case": "^1.0.1",
     "semver": "^7.3.7",
-    "shelljs": "^0.8.5",
+    "shelljs": "^0.10.0",
     "user-home": "^3.0.0"
   }
 }

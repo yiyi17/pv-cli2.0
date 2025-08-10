@@ -57,7 +57,7 @@
     "request": "^2.88.2",
     "root-check": "^2.0.0",
     "semver": "^7.3.7",
-    "shelljs": "^0.8.5",
+    "shelljs": "^0.10.0",
     "user-home": "2",
     "yargs": "^17.5.1"
   },
