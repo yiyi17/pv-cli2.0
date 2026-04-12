@@ -47,7 +47,7 @@
     "copy-paste": "^1.5.3",
     "crypto": "^1.0.1",
     "dedent": "^1.0.0",
-    "dotenv": "^16.0.1",
+    "dotenv": "^17.0.0",
     "fs-extra": "^11.0.0",
     "import-local": "^3.1.0",
     "npkill": "^0.11.3",
