@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.23.5",
-    "@babel/traverse": "^7.23.5",
+    "@babel/traverse": "^8.0.0",
     "@pvjs/pv-exec": "file:../exec",
     "@pvjs/pv-get-npm-info": "file:../../utils/get-npm-info",
     "@pvjs/pv-init": "file:../../commands/init",
